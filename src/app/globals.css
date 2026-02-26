@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vanta: #050505;
+  --color-ash: #888888;
+  --color-border: #222222;
+  --color-border-light: #333333;
+  --color-surface: #0a0a0a;
+  --color-surface-hover: #111111;
+  --color-danger: #ff2020;
+  --font-heading: "Helvetica Neue", "Arial Black", "Arial", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  * { cursor: none !important; }
+
+  html {
+    background-color: var(--color-vanta);
+    color: white;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-vanta);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: white;
+    color: var(--color-vanta);
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--color-vanta); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border-light); border-radius: 2px; }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .tracking-brutal {
+    letter-spacing: -0.04em;
+  }
+
+  .tracking-wide-brutal {
+    letter-spacing: 0.2em;
+  }
+
+  .btn-primary {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 18px 48px;
+    background: white;
+    color: var(--color-vanta);
+    border: 1px solid white;
+    transition: none;
+    font-size: 13px;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-vanta);
+    color: white;
+  }
+
+  .btn-outline {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 18px 48px;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    transition: none;
+    font-size: 13px;
+  }
+
+  .btn-outline:hover {
+    background: white;
+    color: var(--color-vanta);
+  }
+
+  .border-grid {
+    border: 1px solid var(--color-border);
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Page flash */
+@keyframes pageFlash {
+  0% { opacity: 1; }
+  8% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.page-flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 99998;
+  pointer-events: none;
+  animation: pageFlash 0.8s ease-out forwards;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s linear, transform 0.6s linear;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
