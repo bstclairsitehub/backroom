@@ -41,7 +41,12 @@ export default function CartDrawer() {
       {/* Backdrop overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-40 transition-opacity"
+          className={`fixed inset-0 z-40 transition-all duration-300 ease-out ${
+            isOpen ? "opacity-100 backdrop-blur-sm" : "opacity-0"
+          }`}
+          style={{
+            backgroundColor: isOpen ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0)",
+          }}
           onClick={close}
         />
       )}
@@ -59,7 +64,7 @@ export default function CartDrawer() {
           </h2>
           <button
             onClick={close}
-            className="text-white hover:invert transition-none text-2xl leading-none"
+            className="text-white hover:text-[#ff2020] text-2xl leading-none transition-colors duration-200"
             aria-label="Close cart"
           >
             ×
@@ -119,7 +124,7 @@ export default function CartDrawer() {
                           onClick={() =>
                             updateQuantity(item.id, item.size, -1)
                           }
-                          className="w-6 h-6 flex items-center justify-center border border-[#222] text-white hover:invert transition-none"
+                          className="w-6 h-6 flex items-center justify-center border border-[#222] text-white hover:bg-white hover:text-[#050505] transition-colors duration-200"
                         >
                           −
                         </button>
@@ -130,7 +135,7 @@ export default function CartDrawer() {
                           onClick={() =>
                             updateQuantity(item.id, item.size, 1)
                           }
-                          className="w-6 h-6 flex items-center justify-center border border-[#222] text-white hover:invert transition-none"
+                          className="w-6 h-6 flex items-center justify-center border border-[#222] text-white hover:bg-white hover:text-[#050505] transition-colors duration-200"
                         >
                           +
                         </button>
@@ -178,7 +183,7 @@ export default function CartDrawer() {
                       <p className="font-heading text-white text-xs font-bold mb-2">
                         ${product.price.toFixed(2)}
                       </p>
-                      <button className="font-body text-xs text-white border border-[#222] px-3 py-1 hover:invert transition-none">
+                      <button className="font-body text-xs text-white border border-[#222] px-3 py-1 hover:bg-white hover:text-[#050505] transition-colors duration-200">
                         ADD
                       </button>
                     </div>
@@ -200,7 +205,7 @@ export default function CartDrawer() {
             </div>
             <Link
               href="/checkout"
-              className="block w-full bg-white text-[#050505] py-3 text-center font-heading font-bold hover:invert transition-none"
+              className="block w-full bg-white text-[#050505] py-3 text-center font-heading font-bold hover:bg-[#050505] hover:text-white transition-colors duration-200"
             >
               CHECKOUT
             </Link>

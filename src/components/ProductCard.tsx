@@ -29,9 +29,12 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/shop/${product.slug}`}>
       <div
-        className="border border-[#222] overflow-hidden cursor-pointer"
+        className="border border-[#222] overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:shadow-lg hover:shadow-white/10"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        style={{
+          transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+        }}
       >
         {/* Image Container */}
         <div className="aspect-[3/4] relative overflow-hidden bg-[#050505]">
@@ -51,7 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div
               className="absolute bottom-0 left-0 right-0 bg-[#050505] border-t border-[#222] p-3 flex flex-col gap-2"
               style={{
-                animation: "slideUp 300ms ease-out forwards",
+                animation: "slideUp 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards",
               }}
             >
               <style>{`
@@ -74,7 +77,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   <button
                     key={size}
                     onClick={(e) => handleSizeClick(size, e)}
-                    className="flex-1 text-[11px] py-2 border border-[#222] text-white hover:bg-white hover:text-[#050505] transition-none"
+                    className="flex-1 text-[11px] py-2 border border-[#222] text-white hover:bg-white hover:text-[#050505] transition-colors duration-200"
                   >
                     {size}
                   </button>

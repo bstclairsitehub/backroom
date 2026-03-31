@@ -23,11 +23,12 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-[9999] px-6 md:px-10 py-5 flex items-center justify-between transition-transform duration-300"
+      className="fixed top-0 left-0 right-0 z-[9999] px-6 md:px-10 py-5 flex items-center justify-between transition-all duration-300 ease-out"
       style={{
         transform: visible ? "translateY(0)" : "translateY(-100%)",
-        backgroundColor: scrolled ? "#050505" : "transparent",
+        backgroundColor: scrolled ? "rgba(5, 5, 5, 0.95)" : "transparent",
         borderBottom: scrolled ? "1px solid #222" : "1px solid transparent",
+        backdropFilter: scrolled ? "blur(10px)" : "blur(0px)",
       }}
     >
       <nav className="flex gap-6 md:gap-8">

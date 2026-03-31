@@ -30,8 +30,7 @@ function ShopContent() {
         </div>
         <button
           onClick={() => setFilterOpen(true)}
-          className="font-heading text-[11px] tracking-[0.2em] px-7 py-3 border border-[#444] hover:bg-white hover:text-[#050505]"
-          style={{ transition: "none" }}
+          className="font-heading text-[11px] tracking-[0.2em] px-7 py-3 border border-[#444] hover:bg-white hover:text-[#050505] transition-colors duration-200"
         >
           FILTER
         </button>
@@ -40,19 +39,32 @@ function ShopContent() {
       {/* Filter Drawer */}
       {filterOpen && (
         <div className="fixed inset-0 z-50">
-          <div className="absolute inset-0 bg-black/60" onClick={() => setFilterOpen(false)} />
-          <div className="absolute left-0 top-0 h-full w-80 bg-[#050505] border-r border-[#222] pt-28 px-8">
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ease-out"
+            onClick={() => setFilterOpen(false)}
+          />
+          <div
+            className="absolute left-0 top-0 h-full w-80 bg-[#050505] border-r border-[#222] pt-28 px-8 transition-all duration-300 ease-out"
+            style={{
+              transform: filterOpen ? "translateX(0)" : "translateX(-100%)",
+            }}
+          >
             <div className="flex justify-between items-center mb-10">
               <span className="font-heading text-base tracking-[0.2em]">FILTER</span>
-              <button onClick={() => setFilterOpen(false)} className="text-[#888] hover:text-white text-xl">&times;</button>
+              <button
+                onClick={() => setFilterOpen(false)}
+                className="text-[#888] hover:text-[#ff2020] text-xl transition-colors duration-200"
+              >
+                &times;
+              </button>
             </div>
             <div className="font-body text-[10px] text-[#888] tracking-[0.2em] uppercase mb-4">CATEGORY</div>
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => { setActiveFilter(cat); setFilterOpen(false); }}
-                className="block w-full text-left py-3 border-b border-[#1a1a1a] font-body text-sm"
-                style={{ color: activeFilter === cat ? "#fff" : "#888", fontWeight: activeFilter === cat ? 700 : 400, transition: "none" }}
+                className="block w-full text-left py-3 border-b border-[#1a1a1a] font-body text-sm transition-colors duration-200"
+                style={{ color: activeFilter === cat ? "#fff" : "#888", fontWeight: activeFilter === cat ? 700 : 400 }}
               >
                 {cat === "All" ? "SHOP ALL" : cat.toUpperCase()}
               </button>
