@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -71,11 +73,13 @@ export default function Home() {
       </section>
 
       {/* Section 2: Marquee */}
-      <Marquee />
+      <ScrollReveal>
+        <Marquee />
+      </ScrollReveal>
 
       {/* Section 3: The Roster */}
       <ScrollReveal>
-        <section className="py-24 px-4">
+        <section className="py-24 px-4 bg-[#0a0a0a] border-t border-b border-[#1a1a1a]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="font-heading text-white text-4xl md:text-5xl tracking-wide mb-3">
